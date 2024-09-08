@@ -1,0 +1,50 @@
+name: Deploy React App to S3
+
+on:
+  push:
+    branches:
+      - main  # Or your desired branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Or your preferred Node.js version
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./portfolio  # Set the correct working directory
+
+      # Build the React app
+      - name: Build the app
+        run: npm run build
+        working-directory: ./  # Set the correct working directory
+
+      # Deploy to S3
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./ s3://$S3_BUCKET_NAME --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+
+      # Invalidate CloudFront cache (optional, if using CloudFront)
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}

@@ -8,10 +8,10 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
-      BUCKET: <bucket-name>
+      BUCKET: victor-cloud-resume 
       DIST: build
       REGION: us-east-1
-      DIST_ID: <ID>
+      DIST_ID: E3RD69NVDIM71M
 
     steps:
     - name: Checkout

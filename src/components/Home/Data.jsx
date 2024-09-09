@@ -1,5 +1,6 @@
 
 const Data = () => {
+  const desc = "< I'm a Cloud Engineer based in Nigeria, and I'm very passionate and dedicated to my work/>"
   return (
     <div className="home__data">
         <h1 className="home__title">
@@ -54,9 +55,8 @@ const Data = () => {
                   ></path>
                 </svg>
         </h1>
-
         <h3 className="home__subtitle">Cloud Engineer</h3>
-        <p className="home__description"> I\m a Cloud Engineer based in Nigeria, and i/m very passionate and dedicated to my work</p>
+        <p className="home__description"> {desc}</p>
 
         <a href="#contact" className="button button--flex">
             Say hello

@@ -2,7 +2,7 @@
 const Social = () => {
   return (
     <div className="home__social">
-        <a href="https://.linkedin.com/in/victor-iliya" className="home__social-icon" target="_blank" rel="noreferrer">
+        <a href="https://linkedin.com/in/victor-iliya" className="home__social-icon" target="_blank" rel="noreferrer">
             <i className="uil uil-linkedin-alt"></i>
         </a>
 
@@ -14,8 +14,8 @@ const Social = () => {
             <i className="uil uil-dribbble"></i>
         </a>
 
-        <a href="www.instagram.com" className="home__social-icon" target="_blank" rel="noreferrer">
-            <i className="uil uil-instagram"></i>
+        <a href="https://victoriliya.hashnode.dev/" className="home__social-icon" target="_blank" rel="noreferrer">
+            <i className="fa-brands fa-hashnode"></i>
         </a>
     </div>
   )

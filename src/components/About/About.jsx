@@ -17,7 +17,7 @@ const About = () => {
         <Info />
 
           <p className="about__description">
-            Hi, i'm a cloud engineer, i crete cloud solutions with the aws cloud.
+            Hi, I'm a cloud engineer, I create cloud solutions with the aws cloud.
           </p>
 
           <a download="" href={CV} className="button button--flex">

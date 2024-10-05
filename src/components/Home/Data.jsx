@@ -1,4 +1,4 @@
-
+import ViewCounter from "./counter"
 const Data = () => {
   const desc = "< I'm a Cloud Engineer based in Nigeria, and I'm very passionate and dedicated to my work/>"
   return (
@@ -57,6 +57,9 @@ const Data = () => {
         </h1>
         <h3 className="home__subtitle">Cloud Engineer</h3>
         <p className="home__description"> {desc}</p>
+        <p className="home__description"> <ViewCounter /></p>
+
+        
 
         <a href="#contact" className="button button--flex">
             Say hello
@@ -79,6 +82,8 @@ const Data = () => {
             </svg>
             {/* <i className="uil uil-message button__icon"></i> */}
         </a>
+
+        
 
     </div>
   )

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const ViewCounter = () => {
-  // State to hold the view counter
-  const [views, setViews] = useState(null); // Initially set to null to show "Loading..."
+  // State to hold the view counter and error message
+  const [views, setViews] = useState(null);
+  const [error, setError] = useState(null);
 
   // URL for your Lambda Function (replace with your actual Lambda function URL)
   const lambdaUrl = 'https://qfoh46wibq2p5gzdqv5cschj2u0nayax.lambda-url.us-east-1.on.aws/';
@@ -11,11 +12,17 @@ const ViewCounter = () => {
   const fetchCounter = async () => {
     try {
       const response = await fetch(lambdaUrl);
+
+      // Check if response is okay (status code 200)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
       setViews(data.views); // Update state with the fetched view count
-    } catch (error) {
-      console.error('Error fetching counter:', error);
-      setViews('Error'); // Handle errors
+    } catch (err) {
+      console.error('Error fetching counter:', err);
+      setError(err.message); // Set error message in state
     }
   };
 
@@ -26,7 +33,11 @@ const ViewCounter = () => {
 
   return (
     <div>
-      <p>Page Views: {views === null ? 'Loading...' : views}</p>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <p>Page Views: {views === null ? 'Loading...' : views}</p>
+      )}
     </div>
   );
 };

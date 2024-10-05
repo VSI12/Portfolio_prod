@@ -1,6 +1,6 @@
 import ViewCounter from "./counter"
 const Data = () => {
-  const desc = "< I'm a Cloud Engineer based in Nigeria, and I'm very passionate and dedicated to my work/>"
+  const desc = "< I'm a Cloud Engineer and I'm very passionate and dedicated to my work/>"
   return (
     <div className="home__data">
         <h1 className="home__title">

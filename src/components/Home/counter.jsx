@@ -7,6 +7,7 @@ const ViewCounter = () => {
 
   // URL for your Lambda Function (replace with your actual Lambda function URL)
   const lambdaUrl = process.env.REACT_APP_LAMBDA_URL;
+  console.log(lambdaUrl)
 
   // Function to fetch the counter from the Lambda URL
   const fetchCounter = async () => {
